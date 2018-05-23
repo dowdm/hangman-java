@@ -70,7 +70,6 @@ public class GameTest {
         testGame.charArrayListAdd('c');
         testGame.charArrayListAdd('a');
         testGame.charArrayListAdd('t');
-        String expected = "cat";
-        assertEquals(expected, testGame.winCheck("cat"));
+        assertEquals(true, testGame.winCheck("cat"));
     }
 }

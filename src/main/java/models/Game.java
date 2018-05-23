@@ -57,12 +57,12 @@ public class Game {
         }
     }
 
-    public String winCheck(String chosenWord) {
-        for(char letter: chosenWord.toCharArray())
-            for{
-
+    public boolean winCheck(String chosenWord) {
+        String guessedWord = "";
+        for (Character letter : usedLetters) {
+            guessedWord += letter;
         }
-
+        return guessedWord.equals(chosenWord);
     }
 }
 
