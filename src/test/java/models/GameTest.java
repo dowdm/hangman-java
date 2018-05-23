@@ -26,16 +26,51 @@ public class GameTest {
         assertEquals(true, testGame.letterCheck('a') );
     }
     @Test
+    public void letterCheck_checksIfCharacterIsInWord_false() throws Exception {
+        Game testGame = new Game ();
+        testGame.setWordChoice("apple");
+        assertEquals(false, testGame.letterCheck('v') );
+    }
+    @Test
     public void lossCheck_checksIfPlayerLoses_true() throws Exception {
         Game testGame = new Game ();
         testGame.setWordChoice("apple");
-        testGame.letterCheck('d');
-        testGame.letterCheck('f');
-        testGame.letterCheck('g');
-        testGame.letterCheck('m');
-        testGame.letterCheck('h');
-        testGame.letterCheck('i');
-        boolean expected = true;
+        testGame.charArrayListAdd('d');
+        testGame.charArrayListAdd('f');
+        testGame.charArrayListAdd('g');
+        testGame.charArrayListAdd('m');
+        testGame.charArrayListAdd('h');
+        testGame.charArrayListAdd('i');
         assertEquals(true, testGame.lossCheck());
+    }
+
+    @Test
+    public void lossCheck_checksIfPlayerLoses_false() throws Exception {
+        Game testGame = new Game ();
+        testGame.setWordChoice("apple");
+        testGame.charArrayListAdd('d');
+        testGame.charArrayListAdd('f');
+        testGame.charArrayListAdd('g');
+        testGame.charArrayListAdd('m');
+        testGame.charArrayListAdd('h');
+        assertEquals(false, testGame.lossCheck());
+    }
+
+    @Test
+    public void setUsedLettersArrayLength_setsLengthOfUsedLettersWithZeroes_5() throws Exception{
+        Game testGame = new Game ();
+        assertEquals(5, testGame.setUsedLettersArrayLength("apple"));
+
+    }
+    @Test
+    public void winCheck_checksIfPlayerwins_true() throws Exception {
+        Game testGame = new Game ();
+        testGame.setWordChoice("cat");
+        testGame.setUsedLettersArrayLength("cat");
+        testGame.charArrayListAdd('c');
+        testGame.charArrayListAdd('a');
+        testGame.charArrayListAdd('t');
+        String expected = "cat";
+        assertEquals(expected, testGame.winCheck("cat"));
     }
 }
